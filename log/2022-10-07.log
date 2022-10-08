@@ -1,0 +1,26 @@
+2022-10-07T05:13:42	API on port 8001
+2022-10-07T05:13:49	::ffff:127.0.0.1 user.read(3)
+2022-10-07T05:14:18	API on port 8001
+2022-10-07T05:14:27	API on port 8001
+2022-10-07T05:14:29	::ffff:127.0.0.1 user.read(3)
+2022-10-07T05:16:14	{ routingWS: {} }
+2022-10-07T05:16:14	API on port 8001
+2022-10-07T05:16:29	{ routingWS: {} }
+2022-10-07T05:16:29	API on port 8001
+2022-10-07T05:16:32	::ffff:127.0.0.1 user.read(3)
+2022-10-07T05:16:51	API on port 8001
+2022-10-07T05:16:54	::ffff:127.0.0.1 user.read(3)
+2022-10-07T05:16:54	{; routingWS: {; city: {; query: [Function: query],; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete]; },; country: { read: [Function: read], find: [Function: find] },; user: {; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete],; find: [Function: find]; }; }; }
+2022-10-07T05:21:32	API on port 8001
+2022-10-07T05:28:17	API on port 8001
+2022-10-07T05:28:22	::ffff:127.0.0.1 user.read(3)
+2022-10-07T05:28:22	{; routingWS: {; city: {; query: [Function: query],; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete]; },; country: { read: [Function: read], find: [Function: find] },; user: {; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete],; find: [Function: find]; }; }; }
+2022-10-07T05:29:23	::ffff:127.0.0.1 user.find("%a%")
+2022-10-07T05:29:23	{; routingWS: {; city: {; query: [Function: query],; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete]; },; country: { read: [Function: read], find: [Function: find] },; user: {; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete],; find: [Function: find]; }; }; }
+2022-10-07T05:29:37	::ffff:127.0.0.1 user.find("%ar%")
+2022-10-07T05:29:37	{; routingWS: {; city: {; query: [Function: query],; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete]; },; country: { read: [Function: read], find: [Function: find] },; user: {; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete],; find: [Function: find]; }; }; }
+2022-10-07T05:29:47	::ffff:127.0.0.1 user.find("%dar%")
+2022-10-07T05:29:47	{; routingWS: {; city: {; query: [Function: query],; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete]; },; country: { read: [Function: read], find: [Function: find] },; user: {; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete],; find: [Function: find]; }; }; }
+2022-10-07T10:57:20	API on port 8001
+2022-10-07T10:57:24	::ffff:127.0.0.1 user.find("%ar%")
+2022-10-07T10:57:24	{; routingWS: {; city: {; query: [Function: query],; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete]; },; country: { read: [Function: read], find: [Function: find] },; user: {; read: [Function: read],; create: [AsyncFunction: create],; update: [AsyncFunction: update],; delete: [Function: delete],; find: [Function: find]; }; }; }
