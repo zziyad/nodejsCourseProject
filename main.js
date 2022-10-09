@@ -3,9 +3,9 @@
 const staticServer = require('./static.js');
 // const { init, routing } = require('./load.js');
 const { load } = require('./load.js');
-const { transport, ports } = require('./config.js')
+const config = require('./config.js')
 
 
 load.init()
-staticServer(ports.staticPort);
-transport.ws(load.routing, ports.apiPort);
+staticServer(config.static.port);
+config.transport.ws(load.routing, config.api.port);

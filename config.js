@@ -1,7 +1,10 @@
 module.exports = {
-  ports: {
-    staticPort: 8000,
-    apiPort: 8001,
+  static: {
+    port: 8000,
+  },
+
+  api: {
+    port: 8001,
   },
   transport: {
     ws: require('./ws.js'),
