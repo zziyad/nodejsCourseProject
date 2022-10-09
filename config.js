@@ -10,7 +10,10 @@ module.exports = {
     ws: require('./ws.js'),
     http: require('./http.js'),
   },
-
+  sandbox: {
+    timeout: 5000,
+    displayErrors: false,
+  },
   mimeTypes: {
     default: 'application/octet-stream',
     htm: 'text/html; charset=UFT-8',
