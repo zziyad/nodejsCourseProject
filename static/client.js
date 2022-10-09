@@ -39,6 +39,7 @@ const api = scaffold({
 });
 
 socket.addEventListener('open', async () => {
-  const data = await api.user.find('%ar%');
+  // const data = await api.user.find('%ar%');
+  const data = await api.user.read(3);
   console.dir({ data });
 });
