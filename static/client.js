@@ -75,6 +75,6 @@ const scaffold = (url) => {
       getEntity: ['name']
     }
   });
-  const data = await api.entity.getEntity('user');
+  const data = await api.entity.getEntity('post');
   console.dir({ data });
 })();

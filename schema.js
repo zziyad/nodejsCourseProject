@@ -39,10 +39,9 @@ schema.load = (schemaPath) => {
 
 schema.get = (name) => {
   console.log('I am here');
-  console.log({ entities, name, map: entities.get(name) });
+  console.log({ entities, name, map: [...entities] });
   entities.get(name);
 }
 
 schema.load('./schema/');
-console.log({ entities });
 module.exports = schema;
