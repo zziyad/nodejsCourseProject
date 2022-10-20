@@ -30,7 +30,6 @@ class Schema {
         const key = path.basename(file, '.js');
         entity[key] = item
       }
-      // console.log({ entityLoad: entity });
       return entity;
     } catch (err) {
       console.error(err);
