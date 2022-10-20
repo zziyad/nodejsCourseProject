@@ -25,7 +25,6 @@ class Schema {
     try {
       const files = await fs.readdir(this.schemaPath);
       for await (const file of files) {
-        console.log({ file });
         const item = await this.loadEntity(this.schemaPath, file);
         const key = path.basename(file, '.js');
         entity[key] = item
