@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = {
+({
   Title: {
     type: 'string',
     required: true,
@@ -16,4 +14,5 @@ module.exports = {
     required: true,
     control: 'button',
   },
-};
+})
+

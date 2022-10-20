@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = {
+({
   Name: {
     type: 'string',
     required: true,
@@ -28,4 +26,5 @@ module.exports = {
     control: 'input',
     validate: (s) => s.includes('@'),
   }
-};
+})
+

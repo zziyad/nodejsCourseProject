@@ -11,50 +11,28 @@ const load = require('./load.js')(config.sandbox);
 const db = require('./db.js')(config.db);
 const transport = require(`./transport/${config.api.transport}.js`);
 const apiPath = path.join(process.cwd(), './api');
-require('./schema.js').load('../schema');
-const schema = require('./schema.js')
-console.log({ schema });
-// const sandbox = {
-//   console: Object.freeze(logger),
-//   db: Object.freeze(db),
-//   common: { hash },
-// };
-// const apiPath = path.join(process.cwd(), './api');
-// const routing = {};
-
-// (async () => {
-//   const files = await fsp.readdir(apiPath);
-//   for (const fileName of files) {
-//     if (!fileName.endsWith('.js')) continue;
-//     const filePath = path.join(apiPath, fileName);
-//     const serviceName = path.basename(fileName, '.js');
-//     routing[serviceName] = await load(filePath, sandbox);
-//   }
-
-//   staticServer('./static', config.static.port, logger);
-//   transport(routing, config.api.port, logger);
-// })();
-
-
+const schema = require('./schema.js');
 
 class Application {
   constructor() {
-    this.routing = {}
+    this.routing = {};
+    // this.schema;
   }
   
   async init() {
-    this.createSandbox();
+    await this.createSandbox();
     await this.loadModule();
     staticServer('./static', config.static.port, logger);
     transport(this.routing, config.api.port, logger);
   }
 
-  createSandbox() {
+  async createSandbox() {
+    const sch = await schema.load();
     const sandbox = {
       console: Object.freeze(logger),
       db: Object.freeze(db),
       common: { hash },
-      schema: Object.freeze(schema),
+      schema: Object.freeze(sch),
       fs: Object.freeze(fs)
     };
 
@@ -66,7 +44,6 @@ class Application {
     const code = `'use strict';\n${src}`;
     const script = new vm.Script(code);
     const context = this.sandbox;
-    // console.log({ context });cl
     const exported = script.runInContext(context, config.sandbox);
     return exported;
   }

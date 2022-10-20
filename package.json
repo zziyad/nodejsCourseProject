@@ -6,6 +6,7 @@
   "private": true,
   "main": "main.js",
   "dependencies": {
+    "metavm": "^1.2.1",
     "pg": "^8.8.0",
     "ws": "^8.8.1"
   }
