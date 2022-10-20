@@ -12,7 +12,7 @@ const db = require('./db.js')(config.db);
 const transport = require(`./transport/${config.api.transport}.js`);
 const apiPath = path.join(process.cwd(), './api');
 const schema = require('./schema.js');
-
+const { node } = require('./dependencies.js');
 class Application {
   constructor() {
     this.routing = {};
@@ -33,7 +33,7 @@ class Application {
       db: Object.freeze(db),
       common: { hash },
       schema: Object.freeze(sch),
-      fs: Object.freeze(fs)
+      node: Object.freeze(node),
     };
 
     this.sandbox = vm.createContext(Object.freeze({ ...sandbox }));
