@@ -27,7 +27,6 @@ module.exports = (routing, port, console) => {
     const [place, name, method] = url.substring(1).split('/');
     if (place !== 'api') return res.end('"Not found1"');
     const entity = routing[name];
-    console.log({ entity });
     if (!entity) return res.end('"Not found2"');
     const handler = entity[method];
     if (!handler) return res.end('"Not found3"');
