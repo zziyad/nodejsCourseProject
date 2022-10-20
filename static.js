@@ -3,6 +3,7 @@
 const http = require('node:http');
 const path = require('node:path');
 const fs = require('node:fs');
+const { prepareFile } = require('./prepareFile.js');
 
 const MIME_TYPES = {
   html: 'text/html; charset=UTF-8',
@@ -25,20 +26,19 @@ const HEADERS = {
 
 module.exports = (root, port, console) => {
   http.createServer(async (req, res) => {
-    const url = req.url === '/' ? '/index.html' : req.url;
-    const filePath = path.join(root, url);
+    const file = await prepareFile(req.url);
+    const statusCode = file.found ? 200 : 404;
     try {
-      const data = await fs.promises.readFile(filePath);
-      const fileExt = path.extname(filePath).substring(1);
-      const mimeType = MIME_TYPES[fileExt] || MIME_TYPES.html;
-      res.writeHead(200, { ...HEADERS, 'Content-Type': mimeType });
-      res.end(data);
+      const mimeType = MIME_TYPES[file.ext] || MIME_TYPES.html;
+      res.writeHead(statusCode, { ...HEADERS, 'Content-Type': mimeType });
+      file.stream.pipe(res);
+      console.log(`${req.method} ${req.url} ${statusCode}`);
     } catch (err) {
-      res.statusCode = 404;
+      res.statusCode = statusCode;
       res.end('"File is not found"');
     }
   }).listen(port);
-
+  
   console.log(`Static on port ${port}`);
 };
 
