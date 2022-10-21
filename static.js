@@ -3,7 +3,7 @@
 const http = require('node:http');
 const path = require('node:path');
 const fs = require('node:fs');
-const { prepareFile } = require('./prepareFile.js');
+const { prepareFile } = require('./common.js');
 
 const MIME_TYPES = {
   html: 'text/html; charset=UTF-8',

@@ -1,8 +1,9 @@
+const crypto = require('node:crypto');
 const path = require('path');
 const fs = require('fs');
-const toBool = [() => true, () => false];
-
 const STATIC_PATH = path.join(process.cwd(), './static');
+
+const toBool = [() => true, () => false];
 
 const prepareFile = async (url) => {
   const paths = [STATIC_PATH, url];
@@ -17,4 +18,14 @@ const prepareFile = async (url) => {
   return { found, ext, stream };
 };
 
-module.exports = { prepareFile };
+
+
+const hash = (password) => new Promise((resolve, reject) => {
+  const salt = crypto.randomBytes(16).toString('base64');
+  crypto.scrypt(password, salt, 64, (err, result) => {
+    if (err) reject(err);
+    resolve(salt + ':' + result.toString('base64'));
+  });
+});
+
+module.exports = { prepareFile, hash,  };

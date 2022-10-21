@@ -6,8 +6,8 @@ const createPosts = async (entity, id) => {
   const block = document.createElement('div');
   block.setAttribute('class', 'block__row');
   const inputs = {};
-  for (const field in schema[entity]) {
-    const definition = schema[entity][field]
+  for (const field in schema) {
+    const definition = schema[field]
     const input = document.createElement('div');
     input.setAttribute('class', field);
     const blockContent = document.createElement('div');
