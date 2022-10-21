@@ -13,15 +13,17 @@ const transport = require(`./transport/${config.api.transport}.js`);
 const apiPath = path.join(process.cwd(), './api');
 const schema = require('./schema.js');
 const { node } = require('./dependencies.js');
-class Application {
-  constructor() {
+const { Cache } = require('./cache.js');
+
+class Application extends Cache {
+  constructor(place) {
+    super(place)
     this.routing = {};
-    // this.schema;
   }
   
   async init() {
     await this.createSandbox();
-    await this.loadModule();
+    await this.load();
     staticServer('./static', config.static.port, logger);
     transport(this.routing, config.api.port, logger);
   }
@@ -39,25 +41,20 @@ class Application {
     this.sandbox = vm.createContext(Object.freeze({ ...sandbox }));
   }
 
-  async load(filePath) {
+  async change(filePath, file) {
+    const serviceName = path.basename(file, '.js');
     const src = await fs.readFile(filePath, 'utf-8');
     const code = `'use strict';\n${src}`;
     const script = new vm.Script(code);
     const context = this.sandbox;
     const exported = script.runInContext(context, config.sandbox);
-    return exported;
+    this.routing[serviceName] = exported;
   }
 
-  async loadModule() {
-    const files = await fs.readdir(apiPath);
-    for (const fileName of files) {
-      if (!fileName.endsWith('.js')) continue;
-      const filePath = path.join(apiPath, fileName);
-      const serviceName = path.basename(fileName, '.js');
-      this.routing[serviceName] = await this.load(filePath);
-    }
+  async load(targetPath = this.path) {
+    return await super.load(targetPath);
   }
 }
 
-const app = new Application();
+const app = new Application('/api');
 app.init()
