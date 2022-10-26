@@ -5,7 +5,6 @@ const fs = require('node:fs').promises;
 const metavm = require('metavm');
 const { Cache } = require('./cache.js');
 
-
 class Schema extends Cache {
   constructor(place) {
     super(place);
