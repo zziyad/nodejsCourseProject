@@ -16,8 +16,7 @@ class Cache {
         if (file.startsWith('.') && !file.endsWith('.js')) continue;
         const filePath = path.join(targetPath, file);
         // if (file.isDirectory()) await this.load(filePath);
-        if (this.place === '/schema') return await this.change(filePath, file);
-        else await this.change(filePath, file);
+        await this.change(filePath, file);
       }
     } catch (err) {
       console.log(err);
