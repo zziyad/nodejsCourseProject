@@ -7,7 +7,6 @@ const staticServer = require('./static.js');
 const logger = require('./logger.js');
 const { hash } = require('./common.js');
 const config = require('./config.js');
-const load = require('./load.js')(config.sandbox);
 const db = require('./db.js')(config.db);
 const transport = require(`./transport/${config.api.transport}.js`);
 const apiPath = path.join(process.cwd(), './api');
@@ -29,12 +28,12 @@ class Application extends Cache {
   }
 
   async createSandbox() {
-    const sch = await schema.load();
+    await schema.load();
     const sandbox = {
       console: Object.freeze(logger),
       db: Object.freeze(db),
       common: { hash },
-      schema: Object.freeze(sch),
+      schema: Object.freeze(schema),
       node: Object.freeze(node),
     };
 
