@@ -34,12 +34,11 @@ module.exports = (root, port, console) => {
       file.stream.pipe(res);
       console.log(`${req.method} ${req.url} ${statusCode}`);
     } catch (err) {
-      res.statusCode = statusCode;
-      res.end('"File is not found"');
+      file.stream(res)
     }
   }).listen(port);
   
   console.log(`Static on port ${port}`);
 };
-
+404
 

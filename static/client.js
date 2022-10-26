@@ -1,4 +1,6 @@
 'use strict';
+import './components/index.js';
+import { router, navigateTo } from "./js/routing.js";
 
 const transport = {};
 
@@ -54,7 +56,8 @@ const scaffold = (url) => {
   return transport[protocol](url);
 };
 
-(async () => {
+
+document.addEventListener("DOMContentLoaded", async () => {
   const api = await scaffold('http://localhost:8001')({
     user: {
       create: ['record'],
@@ -81,4 +84,15 @@ const scaffold = (url) => {
  
   window.api = api;
 
-})();
+  document.body.addEventListener("click", e => {
+      if (e.target.matches("[data-link]")) {
+          e.preventDefault();
+          navigateTo(e.target.href);
+      }
+  });
+
+  router();
+});
+// (async () => {
+  
+// })();
