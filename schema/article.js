@@ -1,26 +1,26 @@
 ({
   title: {
-    type: 'string',
-    required: true
+    type: "string",
+    required: true,
   },
   description: {
-    type: 'string'
+    type: "string",
   },
   markdown: {
-    type: 'string',
-    required: true
+    type: "string",
+    required: true,
   },
   createdAt: {
-    type: 'date',
-    now : new Date().toISOString().split('T')[0],
+    type: "date",
+    now: new Date().toISOString().split("T")[0],
   },
   slug: {
-    type: 'string',
+    type: "string",
     required: true,
-    unique: true
+    unique: true,
   },
   sanitizedHtml: {
-    type: 'string',
-    required: true
-  }
-})
+    type: "string",
+    required: true,
+  },
+});

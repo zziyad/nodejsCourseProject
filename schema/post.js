@@ -1,18 +1,17 @@
 ({
   Title: {
-    type: 'string',
+    type: "number",
     required: true,
-    control: 'h2',
+    control: "h2",
   },
   Text: {
-    type: 'string',
+    type: "string",
     required: true,
-    control: 'p',
+    control: "p",
   },
   Button: {
-    type: 'string',
+    type: "string",
     required: true,
-    control: 'button',
+    control: "button",
   },
-})
-
+});
