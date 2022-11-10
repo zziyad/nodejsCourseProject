@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const path = require('path');
-const fsp = require('fs').promises;
+const path = require("path");
+const fsp = require("fs").promises;
 
 class Cache {
   constructor(place) {
@@ -13,7 +13,7 @@ class Cache {
     try {
       const files = await fsp.readdir(targetPath, { withFileTypes: true });
       for (const file of files) {
-        if (file.name.startsWith('.') && !file.name.endsWith('.js')) continue;
+        if (file.name.startsWith(".") && !file.name.endsWith(".js")) continue;
         const filePath = path.join(targetPath, file.name);
         if (file.isDirectory()) await this.load(filePath);
         await this.change(filePath, file.name);
